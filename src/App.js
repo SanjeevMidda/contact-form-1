@@ -4,18 +4,18 @@ import "./index.css";
 function App() {
   // Create state
 
-  const [form, setForm] = useState({
+  const [userInput, setUserInput] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    phoneNumber: "",
+    phoneNumber: undefined,
     message: "",
   });
 
-  const [userInput, setUserInput] = useState("");
-
   const storeInput = (e) => {
-    // setUserInput([...userInput, e.target.name: ])
+    const { name, value } = e.target;
+
+    setUserInput({ ...userInput, [name]: value });
   };
 
   console.log(userInput);
@@ -35,7 +35,7 @@ function App() {
                 <input
                   type="text"
                   name="firstName"
-                  value={form.firstName}
+                  value={userInput.firstName}
                   onChange={storeInput}
                 />
               </label>
@@ -47,7 +47,7 @@ function App() {
                 <input
                   type="text"
                   name="lastName"
-                  value={form.lastName}
+                  value={userInput.lastName}
                   onChange={storeInput}
                 />
               </label>
@@ -59,7 +59,7 @@ function App() {
             <input
               type="text"
               name="email"
-              value={form.email}
+              value={userInput.email}
               onChange={storeInput}
             />
           </label>
@@ -69,7 +69,7 @@ function App() {
             <input
               type="text"
               name="phone number"
-              value={form.phoneNumber}
+              value={userInput.phoneNumber}
               onChange={storeInput}
             />
           </label>
@@ -81,7 +81,7 @@ function App() {
               name="message"
               rows={5}
               cols={10}
-              value={form.message}
+              value={userInput.message}
               onChange={storeInput}
             ></textarea>
           </label>
