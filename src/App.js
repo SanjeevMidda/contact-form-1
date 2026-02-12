@@ -2,13 +2,11 @@ import { useState } from "react";
 import "./index.css";
 
 function App() {
-  // Create state
-
   const [userInput, setUserInput] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    phoneNumber: undefined,
+    phoneNumber: "undefined",
     message: "",
   });
 
@@ -18,7 +16,9 @@ function App() {
     setUserInput({ ...userInput, [name]: value });
   };
 
-  console.log(userInput);
+  const onSubmit = () => {
+    console.log("submitted");
+  };
 
   return (
     <div className="App">
@@ -30,7 +30,7 @@ function App() {
           </div>
           <div className="name">
             <div>
-              <label>
+              <label htmlFor="firstName">
                 First name
                 <input
                   type="text"
@@ -42,7 +42,7 @@ function App() {
             </div>
 
             <div className="div">
-              <label>
+              <label htmlFor="lastName">
                 Last name
                 <input
                   type="text"
@@ -54,7 +54,7 @@ function App() {
             </div>
           </div>
 
-          <label htmlFor="">
+          <label htmlFor="email">
             Email
             <input
               type="text"
@@ -64,20 +64,19 @@ function App() {
             />
           </label>
 
-          <label htmlFor="">
+          <label htmlFor="phoneNumber">
             Phone number
             <input
               type="text"
-              name="phone number"
+              name="phoneNumber"
               value={userInput.phoneNumber}
               onChange={storeInput}
             />
           </label>
 
-          <label htmlFor="">
+          <label htmlFor="phoneNumber">
             Message
             <textarea
-              type="textArea"
               name="message"
               rows={5}
               cols={10}
@@ -86,7 +85,9 @@ function App() {
             ></textarea>
           </label>
 
-          <button>Send message</button>
+          <button type="submit" onClick={onSubmit}>
+            Send message
+          </button>
         </form>
         <div className="imgWrapper"></div>
       </div>
