@@ -6,7 +6,7 @@ function App() {
     firstName: "",
     lastName: "",
     email: "",
-    phoneNumber: "undefined",
+    phoneNumber: "",
     message: "",
   });
 
@@ -16,14 +16,16 @@ function App() {
     setUserInput({ ...userInput, [name]: value });
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+
     console.log("submitted");
   };
 
   return (
     <div className="App">
       <div className="mainWrapper">
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="title">
             <div className="circle"></div>
             <h1>FORM UI</h1>
@@ -33,6 +35,7 @@ function App() {
               <label htmlFor="firstName">
                 First name
                 <input
+                  required
                   type="text"
                   name="firstName"
                   value={userInput.firstName}
@@ -45,6 +48,7 @@ function App() {
               <label htmlFor="lastName">
                 Last name
                 <input
+                  required
                   type="text"
                   name="lastName"
                   value={userInput.lastName}
@@ -57,7 +61,8 @@ function App() {
           <label htmlFor="email">
             Email
             <input
-              type="text"
+              required
+              type="email"
               name="email"
               value={userInput.email}
               onChange={storeInput}
@@ -67,6 +72,7 @@ function App() {
           <label htmlFor="phoneNumber">
             Phone number
             <input
+              required
               type="text"
               name="phoneNumber"
               value={userInput.phoneNumber}
@@ -74,9 +80,11 @@ function App() {
             />
           </label>
 
-          <label htmlFor="phoneNumber">
+          <label htmlFor="message">
             Message
             <textarea
+              required
+              id="message"
               name="message"
               rows={5}
               cols={10}
@@ -85,9 +93,7 @@ function App() {
             ></textarea>
           </label>
 
-          <button type="submit" onClick={onSubmit}>
-            Send message
-          </button>
+          <button type="submit">Send message</button>
         </form>
         <div className="imgWrapper"></div>
       </div>
