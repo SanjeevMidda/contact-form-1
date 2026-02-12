@@ -1,8 +1,24 @@
+import { useState } from "react";
 import "./index.css";
 
 function App() {
-  // Create form
   // Create state
+
+
+  const [userInput, setUserInput] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    message: "",
+  });
+
+  const storeInput = (e) => {
+    setUserInput([...userInput, e.target.name: ])
+  };
+
+  console.log(userInput);
+
   return (
     <div className="App">
       <div className="mainWrapper">
@@ -15,26 +31,46 @@ function App() {
             <div>
               <label>
                 First name
-                <input type="text" name="" />
+                <input
+                  type="text"
+                  name="firstName"
+                  value={userInput.firstName}
+                  onChange={storeInput}
+                />
               </label>
             </div>
 
             <div className="div">
               <label>
                 Last name
-                <input type="text" name="" />
+                <input
+                  type="text"
+                  name="lastName"
+                  value={userInput.lastName}
+                  onChange={storeInput}
+                />
               </label>
             </div>
           </div>
 
           <label htmlFor="">
             Email
-            <input type="text" name="email" />
+            <input
+              type="text"
+              name="email"
+              value={userInput.email}
+              onChange={storeInput}
+            />
           </label>
 
           <label htmlFor="">
             Phone number
-            <input type="text" name="phone number" />
+            <input
+              type="text"
+              name="phone number"
+              value={userInput.phoneNumber}
+              onChange={storeInput}
+            />
           </label>
 
           <label htmlFor="">
@@ -44,14 +80,14 @@ function App() {
               name="message"
               rows={5}
               cols={10}
+              value={userInput.message}
+              onChange={storeInput}
             ></textarea>
           </label>
 
           <button>Send message</button>
         </form>
-        <div className="imgWrapper">
-          <img src="" alt="" />
-        </div>
+        <div className="imgWrapper"></div>
       </div>
     </div>
   );
