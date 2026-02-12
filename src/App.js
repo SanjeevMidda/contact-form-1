@@ -4,8 +4,7 @@ import "./index.css";
 function App() {
   // Create state
 
-
-  const [userInput, setUserInput] = useState({
+  const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -13,8 +12,10 @@ function App() {
     message: "",
   });
 
+  const [userInput, setUserInput] = useState("");
+
   const storeInput = (e) => {
-    setUserInput([...userInput, e.target.name: ])
+    // setUserInput([...userInput, e.target.name: ])
   };
 
   console.log(userInput);
@@ -34,7 +35,7 @@ function App() {
                 <input
                   type="text"
                   name="firstName"
-                  value={userInput.firstName}
+                  value={form.firstName}
                   onChange={storeInput}
                 />
               </label>
@@ -46,7 +47,7 @@ function App() {
                 <input
                   type="text"
                   name="lastName"
-                  value={userInput.lastName}
+                  value={form.lastName}
                   onChange={storeInput}
                 />
               </label>
@@ -58,7 +59,7 @@ function App() {
             <input
               type="text"
               name="email"
-              value={userInput.email}
+              value={form.email}
               onChange={storeInput}
             />
           </label>
@@ -68,7 +69,7 @@ function App() {
             <input
               type="text"
               name="phone number"
-              value={userInput.phoneNumber}
+              value={form.phoneNumber}
               onChange={storeInput}
             />
           </label>
@@ -80,7 +81,7 @@ function App() {
               name="message"
               rows={5}
               cols={10}
-              value={userInput.message}
+              value={form.message}
               onChange={storeInput}
             ></textarea>
           </label>
